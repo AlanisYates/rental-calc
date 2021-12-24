@@ -11,7 +11,8 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
-import AddIcon from '@mui/icons-material/Add';
+import AddIcon from "@mui/icons-material/Add";
+import SubmitProperty from "../SubmitProperty/SubmitPorperty";
 
 const drawerWidth = 240;
 
@@ -45,7 +46,7 @@ export default function Sidebar() {
         <Divider />
         <List>
           <ListItem button>
-            <ListItemIcon >
+            <ListItemIcon>
               <AddIcon />
             </ListItemIcon>
             <ListItemText>New Property</ListItemText>
@@ -63,6 +64,7 @@ export default function Sidebar() {
         sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
       >
         <Toolbar />
+        <SubmitProperty />
         {/* <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
