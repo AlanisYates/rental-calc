@@ -14,6 +14,23 @@ const steps = [
   "Review",
 ];
 
+const renderStepContent = (step) => {
+  switch (step) {
+    case 0:
+      return <Typography>Property Information Form</Typography>;
+    case 1:
+      return <Typography>Income Form</Typography>;
+    case 2:
+      return <Typography>Expense Form</Typography>;
+    case 3:
+      return <Typography>Loan Information Form</Typography>;
+    case 4:
+      return <Typography>Property Review Form</Typography>;
+    default:
+      return <div>Not Found</div>;
+  }
+};
+
 // Form Props
 // const {formId, formField} = propertyFormModel;
 
@@ -35,6 +52,7 @@ export default function SubmitProperty() {
 
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   const handleSubmit = async () => {
+    // handle submit to DB
     await sleep(1000);
     alert("You have submitted youtr property");
   };
@@ -54,7 +72,7 @@ export default function SubmitProperty() {
       </Stepper>
       {activeStep === steps.length - 1 ? (
         <>
-          <Typography sx={{ mt: 2, mb: 1 }}>All Steps Completed!</Typography>
+          {/* <Typography sx={{ mt: 2, mb: 1 }}>All Steps Completed!</Typography> */}
           <Box sx={{ display: "flex", flexDirection: "row", ps: 2 }}>
             <Box sx={{ flex: "1 1 auto" }}>
               <Button onClick={handleSubmit}>Submit</Button>
@@ -65,6 +83,8 @@ export default function SubmitProperty() {
         </>
       ) : (
         <>
+          {renderStepContent(activeStep)}
+
           <Button onClick={handleNext}>Next</Button>
           {activeStep !== 0 && <Button onClick={handleBack}>Back</Button>}
         </>
