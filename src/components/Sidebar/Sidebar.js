@@ -57,18 +57,6 @@ export default function Sidebar() {
             <ListItemText>All Properties</ListItemText>
           </ListItem>
         </List>
-       
-        {/* <Divider />
-        <List>
-          {['New Property'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List> */}
       </Drawer>
       <Box
         component="main"
