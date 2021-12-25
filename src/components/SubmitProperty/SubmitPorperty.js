@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
+import { Formik, Form } from "formik";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import StepLabel from "@mui/material/StepLabel";
+import PropertyFormInfo from "../Forms/PropertyFormInfo";
+import formInitalValues from "../FormModel/formInitalValues";
+import propertyFormModel from "../FormModel/propertyFormModel";
+import validationSchema from "../FormModel/validationSchema";
 
 const steps = [
   "Property Informaion",
@@ -14,10 +19,12 @@ const steps = [
   "Review",
 ];
 
-const renderStepContent = (step) => {
+const { formId, formField } = propertyFormModel;
+
+const _renderStepContent = (step) => {
   switch (step) {
     case 0:
-      return <Typography>Property Information Form</Typography>;
+      return <PropertyFormInfo formField={formField} />;
     case 1:
       return <Typography>Income Form</Typography>;
     case 2:
@@ -31,30 +38,44 @@ const renderStepContent = (step) => {
   }
 };
 
-// Form Props
-// const {formId, formField} = propertyFormModel;
-
 export default function SubmitProperty() {
   const [activeStep, setActiveStep] = useState(0);
+  const isLastStep = activeStep === steps.length - 1;
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
+  function _sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+  async function _submitForm(values, actions) {
+    await _sleep(1000);
+    alert(JSON.stringify(values, null, 2));
+    // actions.setSubmitting(false);
+
+    // setActiveStep(activeStep + 1);
+  }
+
+//   function _handleSubmit(values, actions) {
+//     if (isLastStep) {
+//       _submitForm(values, actions);
+//     } else {
+        
+//     //   setActiveStep(activeStep + 1);
+//         actions.setTouched({});
+//         actions.setSubmitting(false);
+//     }
+//   }
+
+const _handleSubmit = (values,actions) => {
+    _submitForm(values,actions)
+}
+
+  function _handleBack() {
+    setActiveStep(activeStep - 1);
+  }
 
   const handleReset = () => {
     // Reset all inputs on form
     setActiveStep(0);
-  };
-
-  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-  const handleSubmit = async () => {
-    // handle submit to DB
-    await sleep(1000);
-    alert("You have submitted youtr property");
   };
 
   return (
@@ -70,26 +91,50 @@ export default function SubmitProperty() {
           );
         })}
       </Stepper>
-      {activeStep === steps.length - 1 ? (
+      {activeStep === steps.length ? (
         <>
-          {/* <Typography sx={{ mt: 2, mb: 1 }}>All Steps Completed!</Typography> */}
-          <Box sx={{ display: "flex", flexDirection: "row", ps: 2 }}>
+          <Typography sx={{ mt: 2, mb: 1 }}>All Steps Completed!</Typography>
+          {/* <Box sx={{ display: "flex", flexDirection: "row", ps: 2 }}>
             <Box sx={{ flex: "1 1 auto" }}>
-              <Button onClick={handleSubmit}>Submit</Button>
+              <Button onClick={_handleSubmit}>Submit</Button>
               <Button onClick={handleReset}>Reset</Button>
-              <Button onClick={handleBack}>Back</Button>
+              <Button onClick={_handleBack}>Back</Button>
             </Box>
-          </Box>
+          </Box> */}
         </>
       ) : (
         <>
-          {renderStepContent(activeStep)}
+          <Formik
+            initialValues={formInitalValues}
+            validationSchema={validationSchema}
+            onSubmit={_handleSubmit}
+          >
+            {({ isSubmitting }) => (
+              <Form id={formId}>
+                {_renderStepContent(activeStep)}
+                {activeStep !== 0 && (
+                  <Button onClick={_handleBack}>Back</Button>
+                )}
+                <Box>
 
-          <Button onClick={handleNext}>Next</Button>
-          {activeStep !== 0 && <Button onClick={handleBack}>Back</Button>}
+                {/* <Button
+                  disabled={isSubmitting}
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                //   onClick={() => {
+                //       setActiveStep(activeStep + 1)
+                //   }}
+                >
+                  {isLastStep ? "Submit" : "Next"}
+                </Button> */}
+                <Button type="submit">Submit</Button>
+                </Box>
+              </Form>
+            )}
+          </Formik>
         </>
       )}
-      {/* <Typography>Hello</Typography> */}
     </Box>
   );
 }
