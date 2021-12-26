@@ -61,28 +61,32 @@ export default function SubmitProperty() {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
-  async function _submitForm(values, actions) {
-    await _sleep(1000);
-    alert(JSON.stringify(values, null, 2));
-    // actions.setSubmitting(false);
-
-    // setActiveStep(activeStep + 1);
+  function _handleSubmit(values, actions) {
+    if (isLastStep) {
+      _submitForm(values, actions);
+    } else {
+      setActiveStep(activeStep + 1);
+      actions.setTouched({});
+      actions.setSubmitting(false);
+    }
   }
 
-  //   function _handleSubmit(values, actions) {
-  //     if (isLastStep) {
-  //       _submitForm(values, actions);
-  //     } else {
-
-  //     //   setActiveStep(activeStep + 1);
-  //         actions.setTouched({});
-  //         actions.setSubmitting(false);
-  //     }
-  //   }
-
-  const _handleSubmit = (values, actions) => {
-    _submitForm(values, actions);
+  const _submitForm = (values, { setSubmitting }) => {
+    setTimeout(() => {
+      alert(JSON.stringify(values, null, 2));
+      setSubmitting(false);
+    }, 400);
   };
+
+  //   onSubmit={) => {
+  //     setTimeout(() => {
+  //       alert(JSON.stringify(values, null, 2));
+  //       setSubmitting(false);
+  //     }, 400);
+  //   }}
+  //   const _handleSubmit = (values, actions) => {
+  //     _submitForm(values, actions);
+  //   };
 
   function _handleBack() {
     setActiveStep(activeStep - 1);
@@ -109,53 +113,30 @@ export default function SubmitProperty() {
       {activeStep === steps.length ? (
         <>
           <Typography sx={{ mt: 2, mb: 1 }}>All Steps Completed!</Typography>
-          {/* <Box sx={{ display: "flex", flexDirection: "row", ps: 2 }}>
+          <Box sx={{ display: "flex", flexDirection: "row", ps: 2 }}>
             <Box sx={{ flex: "1 1 auto" }}>
               <Button onClick={_handleSubmit}>Submit</Button>
               <Button onClick={handleReset}>Reset</Button>
               <Button onClick={_handleBack}>Back</Button>
             </Box>
-          </Box> */}
+          </Box>
         </>
       ) : (
         <>
           <Formik
             initialValues={formInitalValues}
             validationSchema={validationSchema}
-            onSubmit={(values, { setSubmitting }) => {
-              setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                setSubmitting(false);
-              }, 400);
-            }}
+            onSubmit={_handleSubmit}
           >
-            <Form>
-              {_renderStepContent(activeStep)}
-              {/* <label htmlFor="firstName">First Name</label>
-              <Field name="firstName" type="text" />
-              <ErrorMessage name="firstName" />
+            {({ isSubmitting }) => (
+              <Form>
+                {_renderStepContent(activeStep)}
 
-              <label htmlFor="lastName">Last Name</label>
-              <Field name="lastName" type="text" />
-              <ErrorMessage name="lastName" />
-
-              <label htmlFor="email">Email Address</label>
-              <Field name="email" type="email" />
-              <ErrorMessage name="email" /> */}
-              {/* 
-              <InputField name="firstName" label="first Name" />
-              <InputField name="lastName" label="Last Name" />
-
-              <InputField name="email" label="Email" /> */}
-              <button type="submit">Submit</button>
-              {/* <Button
-                onClick={() => {
-                  console.log(formField.nickName);
-                }}
-              >
-                Log Form
-              </Button> */}
-            </Form>
+                <Button disabled={isSubmitting} type="submit">
+                  {isLastStep ? "Submit" : "next"}
+                </Button>
+              </Form>
+            )}
           </Formik>
         </>
       )}
