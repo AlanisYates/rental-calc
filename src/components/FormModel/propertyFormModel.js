@@ -4,12 +4,13 @@ export default {
     nickName: {
       name: "nickName",
       label: "nickname",
+      requiredErrorMsg: "Nickname Required",
     },
-    // addressOne: {
-    //   name: "addressOne",
-    //   label: "Address Line 1*",
-    //   requiredErrorMsg: "Address line 1 is required.",
-    // },
+    addressOne: {
+      name: "addressOne",
+      label: "Address Line 1*",
+      requiredErrorMsg: "Address line 1 is required.",
+    },
     // addressTwo: {
     //   name: "addressTwo",
     //   label: "Address Line 2",

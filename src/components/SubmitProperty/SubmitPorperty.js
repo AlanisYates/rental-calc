@@ -9,7 +9,7 @@ import StepLabel from "@mui/material/StepLabel";
 import PropertyFormInfo from "../Forms/PropertyFormInfo";
 import formInitalValues from "../FormModel/formInitalValues";
 import propertyFormModel from "../FormModel/propertyFormModel";
-// import validationSchema from "../FormModel/validationSchema";
+import validationSchema from "../FormModel/validationSchema";
 import * as Yup from "yup";
 // import { TextField } from "@mui/material";
 import InputField from "../FormFields/InputField";
@@ -40,23 +40,18 @@ const _renderStepContent = (step) => {
   }
 };
 
-const validationSchema = Yup.object({
-  firstName: Yup.string()
-    .max(15, "Must be 15 characters or less")
-    .required("Required"),
-  lastName: Yup.string()
-    .max(20, "Must be 20 characters or less")
-    .required("Required"),
-  email: Yup.string().email("Invalid email address").required("Required"),
-});
-
-// const InputField = ({ name, text }) => (
-//   <>
-//     <label htmlFor={name}>{text}</label>
-//     <Field name={name} type="text" />
-//     <ErrorMessage name={name} />
-//   </>
-// );
+// const validationSchema = Yup.object({
+//   [formField.nickName.name]: Yup.string().required(
+//     `${formField.nickName.requiredErrorMsg}`
+//   ),
+//   //   firstName: Yup.string()
+//   //     .max(15, "Must be 15 characters or less")
+//   //     .required("Required"),
+//   //   lastName: Yup.string()
+//   //     .max(20, "Must be 20 characters or less")
+//   //     .required("Required"),
+//   //   email: Yup.string().email("Invalid email address").required("Required"),
+// });
 
 export default function SubmitProperty() {
   const [activeStep, setActiveStep] = useState(0);
@@ -125,7 +120,7 @@ export default function SubmitProperty() {
       ) : (
         <>
           <Formik
-            initialValues={{ firstName: "", lastName: "", email: "" }}
+            initialValues={formInitalValues}
             validationSchema={validationSchema}
             onSubmit={(values, { setSubmitting }) => {
               setTimeout(() => {
@@ -135,6 +130,7 @@ export default function SubmitProperty() {
             }}
           >
             <Form>
+              {_renderStepContent(activeStep)}
               {/* <label htmlFor="firstName">First Name</label>
               <Field name="firstName" type="text" />
               <ErrorMessage name="firstName" />
@@ -146,12 +142,19 @@ export default function SubmitProperty() {
               <label htmlFor="email">Email Address</label>
               <Field name="email" type="email" />
               <ErrorMessage name="email" /> */}
-
+              {/* 
               <InputField name="firstName" label="first Name" />
               <InputField name="lastName" label="Last Name" />
 
-              <InputField name="email" label="Email" />
+              <InputField name="email" label="Email" /> */}
               <button type="submit">Submit</button>
+              {/* <Button
+                onClick={() => {
+                  console.log(formField.nickName);
+                }}
+              >
+                Log Form
+              </Button> */}
             </Form>
           </Formik>
         </>
