@@ -8,29 +8,25 @@ export default function PropertyFormInfo(props) {
   const {
     formField: {
       nickName,
-    //   addressOne,
-    //   addressTwo,
-    //   city,
-    //   state,
-    //   zipcode,
-    //   country,
-    //   price,
+      //   addressOne,
+      //   addressTwo,
+      //   city,
+      //   state,
+      //   zipcode,
+      //   country,
+      //   price,
     },
   } = props;
   return (
     <>
       <Typography variant="h6">Property Form</Typography>
-      <Grid container spacing={3}>
+      <TextField label={nickName.name} />
+
+      {/* <Grid container spacing={3}>
         <Grid item xs={12} spacing={3}>
-            <TextField fullWidth name="nickname" label="nickname"/>
-          {/* <InputField
-          id={nickName.label}
-            name={nickName.name}
-            label={nickName.label}
-            fullWidth
-          /> */}
+         
         </Grid>
-      </Grid>
+      </Grid> */}
     </>
   );
 }

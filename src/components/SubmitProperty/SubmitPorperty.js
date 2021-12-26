@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
-import { Formik, Form } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import Button from "@mui/material/Button";
@@ -9,8 +9,10 @@ import StepLabel from "@mui/material/StepLabel";
 import PropertyFormInfo from "../Forms/PropertyFormInfo";
 import formInitalValues from "../FormModel/formInitalValues";
 import propertyFormModel from "../FormModel/propertyFormModel";
-import validationSchema from "../FormModel/validationSchema";
-
+// import validationSchema from "../FormModel/validationSchema";
+import * as Yup from "yup";
+// import { TextField } from "@mui/material";
+import InputField from "../FormFields/InputField";
 const steps = [
   "Property Informaion",
   "Income",
@@ -38,6 +40,24 @@ const _renderStepContent = (step) => {
   }
 };
 
+const validationSchema = Yup.object({
+  firstName: Yup.string()
+    .max(15, "Must be 15 characters or less")
+    .required("Required"),
+  lastName: Yup.string()
+    .max(20, "Must be 20 characters or less")
+    .required("Required"),
+  email: Yup.string().email("Invalid email address").required("Required"),
+});
+
+// const InputField = ({ name, text }) => (
+//   <>
+//     <label htmlFor={name}>{text}</label>
+//     <Field name={name} type="text" />
+//     <ErrorMessage name={name} />
+//   </>
+// );
+
 export default function SubmitProperty() {
   const [activeStep, setActiveStep] = useState(0);
   const isLastStep = activeStep === steps.length - 1;
@@ -54,20 +74,20 @@ export default function SubmitProperty() {
     // setActiveStep(activeStep + 1);
   }
 
-//   function _handleSubmit(values, actions) {
-//     if (isLastStep) {
-//       _submitForm(values, actions);
-//     } else {
-        
-//     //   setActiveStep(activeStep + 1);
-//         actions.setTouched({});
-//         actions.setSubmitting(false);
-//     }
-//   }
+  //   function _handleSubmit(values, actions) {
+  //     if (isLastStep) {
+  //       _submitForm(values, actions);
+  //     } else {
 
-const _handleSubmit = (values,actions) => {
-    _submitForm(values,actions)
-}
+  //     //   setActiveStep(activeStep + 1);
+  //         actions.setTouched({});
+  //         actions.setSubmitting(false);
+  //     }
+  //   }
+
+  const _handleSubmit = (values, actions) => {
+    _submitForm(values, actions);
+  };
 
   function _handleBack() {
     setActiveStep(activeStep - 1);
@@ -105,33 +125,34 @@ const _handleSubmit = (values,actions) => {
       ) : (
         <>
           <Formik
-            initialValues={formInitalValues}
+            initialValues={{ firstName: "", lastName: "", email: "" }}
             validationSchema={validationSchema}
-            onSubmit={_handleSubmit}
+            onSubmit={(values, { setSubmitting }) => {
+              setTimeout(() => {
+                alert(JSON.stringify(values, null, 2));
+                setSubmitting(false);
+              }, 400);
+            }}
           >
-            {({ isSubmitting }) => (
-              <Form id={formId}>
-                {_renderStepContent(activeStep)}
-                {activeStep !== 0 && (
-                  <Button onClick={_handleBack}>Back</Button>
-                )}
-                <Box>
+            <Form>
+              {/* <label htmlFor="firstName">First Name</label>
+              <Field name="firstName" type="text" />
+              <ErrorMessage name="firstName" />
 
-                {/* <Button
-                  disabled={isSubmitting}
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                //   onClick={() => {
-                //       setActiveStep(activeStep + 1)
-                //   }}
-                >
-                  {isLastStep ? "Submit" : "Next"}
-                </Button> */}
-                <Button type="submit">Submit</Button>
-                </Box>
-              </Form>
-            )}
+              <label htmlFor="lastName">Last Name</label>
+              <Field name="lastName" type="text" />
+              <ErrorMessage name="lastName" />
+
+              <label htmlFor="email">Email Address</label>
+              <Field name="email" type="email" />
+              <ErrorMessage name="email" /> */}
+
+              <InputField name="firstName" label="first Name" />
+              <InputField name="lastName" label="Last Name" />
+
+              <InputField name="email" label="Email" />
+              <button type="submit">Submit</button>
+            </Form>
           </Formik>
         </>
       )}

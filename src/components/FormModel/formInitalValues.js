@@ -13,7 +13,7 @@ const {
 } = propertyFormModel;
 
 export default {
-  [nickName.name]: '',
+  [nickName.name]: "",
   // [addressOne.name]: "",
   // [addressTwo.name]: "",
   // [city.name]: "",
