@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import Button from "@mui/material/Button";
@@ -10,9 +10,7 @@ import PropertyFormInfo from "../Forms/PropertyFormInfo";
 import formInitalValues from "../FormModel/formInitalValues";
 import propertyFormModel from "../FormModel/propertyFormModel";
 import validationSchema from "../FormModel/validationSchema";
-import * as Yup from "yup";
-// import { TextField } from "@mui/material";
-import InputField from "../FormFields/InputField";
+
 const steps = [
   "Property Informaion",
   "Income",
@@ -21,7 +19,7 @@ const steps = [
   "Review",
 ];
 
-const { formId, formField } = propertyFormModel;
+const { formField } = propertyFormModel;
 
 const _renderStepContent = (step) => {
   switch (step) {
@@ -40,28 +38,11 @@ const _renderStepContent = (step) => {
   }
 };
 
-// const validationSchema = Yup.object({
-//   [formField.nickName.name]: Yup.string().required(
-//     `${formField.nickName.requiredErrorMsg}`
-//   ),
-//   //   firstName: Yup.string()
-//   //     .max(15, "Must be 15 characters or less")
-//   //     .required("Required"),
-//   //   lastName: Yup.string()
-//   //     .max(20, "Must be 20 characters or less")
-//   //     .required("Required"),
-//   //   email: Yup.string().email("Invalid email address").required("Required"),
-// });
-
 export default function SubmitProperty() {
   const [activeStep, setActiveStep] = useState(0);
   const isLastStep = activeStep === steps.length - 1;
 
-  function _sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-
-  function _handleSubmit(values, actions) {
+  const _handleSubmit = (values, actions) => {
     if (isLastStep) {
       _submitForm(values, actions);
     } else {
@@ -69,31 +50,21 @@ export default function SubmitProperty() {
       actions.setTouched({});
       actions.setSubmitting(false);
     }
-  }
+  };
 
   const _submitForm = (values, { setSubmitting }) => {
     setTimeout(() => {
       alert(JSON.stringify(values, null, 2));
       setSubmitting(false);
+      setActiveStep(activeStep + 1);
     }, 400);
   };
 
-  //   onSubmit={) => {
-  //     setTimeout(() => {
-  //       alert(JSON.stringify(values, null, 2));
-  //       setSubmitting(false);
-  //     }, 400);
-  //   }}
-  //   const _handleSubmit = (values, actions) => {
-  //     _submitForm(values, actions);
-  //   };
-
-  function _handleBack() {
+  const handleBack = () => {
     setActiveStep(activeStep - 1);
-  }
+  };
 
   const handleReset = () => {
-    // Reset all inputs on form
     setActiveStep(0);
   };
 
@@ -113,13 +84,6 @@ export default function SubmitProperty() {
       {activeStep === steps.length ? (
         <>
           <Typography sx={{ mt: 2, mb: 1 }}>All Steps Completed!</Typography>
-          <Box sx={{ display: "flex", flexDirection: "row", ps: 2 }}>
-            <Box sx={{ flex: "1 1 auto" }}>
-              <Button onClick={_handleSubmit}>Submit</Button>
-              <Button onClick={handleReset}>Reset</Button>
-              <Button onClick={_handleBack}>Back</Button>
-            </Box>
-          </Box>
         </>
       ) : (
         <>
@@ -131,7 +95,10 @@ export default function SubmitProperty() {
             {({ isSubmitting }) => (
               <Form>
                 {_renderStepContent(activeStep)}
-
+                {activeStep !== 0 && <Button onClick={handleBack}>Back</Button>}
+                <Button onClick={handleReset} type="reset">
+                  Reset
+                </Button>
                 <Button disabled={isSubmitting} type="submit">
                   {isLastStep ? "Submit" : "next"}
                 </Button>
