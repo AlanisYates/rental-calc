@@ -95,13 +95,18 @@ export default function SubmitProperty() {
             {({ isSubmitting }) => (
               <Form>
                 {_renderStepContent(activeStep)}
-                {activeStep !== 0 && <Button onClick={handleBack}>Back</Button>}
-                <Button onClick={handleReset} type="reset">
-                  Reset
-                </Button>
-                <Button disabled={isSubmitting} type="submit">
-                  {isLastStep ? "Submit" : "next"}
-                </Button>
+                <Box>
+                  {activeStep !== 0 && (
+                    <Button onClick={handleBack}>Back</Button>
+                  )}
+
+                  <Button onClick={handleReset} type="reset">
+                    Reset
+                  </Button>
+                  <Button disabled={isSubmitting} type="submit">
+                    {isLastStep ? "Submit" : "next"}
+                  </Button>
+                </Box>
               </Form>
             )}
           </Formik>
