@@ -31,5 +31,5 @@ export default Yup.object({
       (val) => val && val.length === 5
     ),
   [country.name]: Yup.string().required(`${country.requiredErrorMsg}`),
-  [price.name]: Yup.string().required(`${price.requiredErrorMsg}`),
+  [price.name]: Yup.number().required(`${price.requiredErrorMsg}`),
 });
