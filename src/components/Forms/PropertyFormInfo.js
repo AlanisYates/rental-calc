@@ -2,17 +2,6 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import InputField from "../FormFields/InputField";
-import { styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
-
-import { Button } from "@mui/material";
-
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(6),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
 
 export default function PropertyFormInfo(props) {
   const {
@@ -33,38 +22,43 @@ export default function PropertyFormInfo(props) {
       <Typography variant="h6" gutterBottom>
         Property Form
       </Typography>
-      {/* <Grid container spacing={4}>
-        <Grid item xs={4}>
-          <InputField name={nickName.name} label={nickName.name} fullWidth />
+      <Grid container spacing={4}>
+        <Grid item xs={6}>
+          <InputField name={nickName.name} label={nickName.label} fullWidth />
         </Grid>
-        <Grid item xs={8}>
-          <InputField name={zLink.name} label={zLink.label} />
+        <Grid item xs={6}>
+          <InputField name={price.name} label={price.label} fullWidth />
         </Grid>
-      </Grid>
-     
+        <Grid item xs={12}>
+          <InputField name={zLink.name} label={zLink.label} fullWidth />
+        </Grid>
         <Grid item xs={12}>
           <InputField
             name={addressOne.name}
-            label={addressOne.name}
+            label={addressOne.label}
             fullWidth
           />
-        </Grid> */}
-      <Grid container spacing={2}>
-        <Grid item xs={8}>
-          <Item>xs=8</Item>
+        </Grid>
+        <Grid item xs={12}>
+          <InputField
+            name={addressTwo.name}
+            label={addressTwo.label}
+            fullWidth
+          />
         </Grid>
         <Grid item xs={4}>
-          <Item>xs=4</Item>
+          <InputField name={city.name} label={city.label} fullWidth />
         </Grid>
         <Grid item xs={4}>
-          <Item>xs=4</Item>
+          <InputField name={state.name} label={state.label} fullWidth />
         </Grid>
-        <Grid item xs={8}>
-          <Item>xs=8</Item>
+        <Grid item xs={2}>
+          <InputField name={zipcode.name} label={zipcode.label} fullWidth />
+        </Grid>
+        <Grid item xs={2}>
+          <InputField name={country.name} label={country.label} fullWidth />
         </Grid>
       </Grid>
-
-      {/* <InputField name={addressTwo.name} label={addressTwo.label} /> */}
     </>
   );
 }

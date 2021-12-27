@@ -3,17 +3,16 @@ export default {
   formField: {
     nickName: {
       name: "nickName",
-      label: "nickname",
-      requiredErrorMsg: "Nickname Required",
+      label: "Name",
     },
     zLink: {
       name: "zLink",
-      label: "Zillow Link*",
+      label: "Zillow Link *",
       requiredErrorMsg: "Link is required.",
     },
     addressOne: {
       name: "addressOne",
-      label: "Address Line 1*",
+      label: "Address Line 1 *",
       requiredErrorMsg: "Address line 1 is required.",
     },
     addressTwo: {
@@ -22,7 +21,7 @@ export default {
     },
     city: {
       name: "city",
-      label: "City",
+      label: "City *",
       requiredErrorMsg: "City is required.",
     },
     state: {
@@ -31,18 +30,18 @@ export default {
     },
     zipcode: {
       name: "zipcode",
-      label: "Zipcode*",
+      label: "Zipcode *",
       requiredErrorMsg: "Zipcode is required",
       invalidErrorMsg: "Zipcode is not valid (e.g. 70000)",
     },
     country: {
       name: "country",
-      label: "Country*",
+      label: "Country *",
       requiredErrorMsg: "Country is required",
     },
     price: {
       name: "price",
-      label: "Price*",
+      label: "Price *",
       requiredErrorMsg: "Price is required",
     },
   },
