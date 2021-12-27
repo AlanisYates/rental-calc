@@ -12,6 +12,7 @@ const {
     country,
     price,
     zLink,
+    friends,
   },
 } = propertyFormModel;
 
@@ -32,4 +33,5 @@ export default Yup.object({
     ),
   [country.name]: Yup.string().required(`${country.requiredErrorMsg}`),
   [price.name]: Yup.number().required(`${price.requiredErrorMsg}`),
+  [friends.name]: Yup.array(),
 });

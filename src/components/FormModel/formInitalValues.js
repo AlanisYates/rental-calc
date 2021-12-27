@@ -10,6 +10,7 @@ const {
     country,
     price,
     zLink,
+    friends,
   },
 } = propertyFormModel;
 
@@ -23,4 +24,10 @@ export default {
   [country.name]: "",
   [price.name]: "",
   [zLink.name]: "",
+  income: [
+    {
+      name: "Item Name",
+      amount: "",
+    },
+  ],
 };

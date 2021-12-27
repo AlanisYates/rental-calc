@@ -44,5 +44,8 @@ export default {
       label: "Price *",
       requiredErrorMsg: "Price is required",
     },
+    friends: {
+      name: "friends",
+    },
   },
 };

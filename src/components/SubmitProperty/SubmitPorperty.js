@@ -10,6 +10,7 @@ import PropertyFormInfo from "../Forms/PropertyFormInfo";
 import formInitalValues from "../FormModel/formInitalValues";
 import propertyFormModel from "../FormModel/propertyFormModel";
 import validationSchema from "../FormModel/validationSchema";
+import IncomeForm from "../Forms/IncomeForm";
 
 const steps = [
   "Property Informaion",
@@ -26,7 +27,7 @@ const _renderStepContent = (step) => {
     case 0:
       return <PropertyFormInfo formField={formField} />;
     case 1:
-      return <Typography>Income Form</Typography>;
+      return <IncomeForm formField={formField} />;
     case 2:
       return <Typography>Expense Form</Typography>;
     case 3:
@@ -92,7 +93,7 @@ export default function SubmitProperty() {
             validationSchema={validationSchema}
             onSubmit={_handleSubmit}
           >
-            {({ isSubmitting }) => (
+            {({ values, isSubmitting }) => (
               <Form>
                 {_renderStepContent(activeStep)}
                 <Box>
