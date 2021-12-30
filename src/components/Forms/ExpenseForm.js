@@ -6,30 +6,30 @@ import InputField from "../FormFields/InputField";
 import InputNumber from "../FormFields/InputNumber";
 import { FieldArray, useFormikContext } from "formik";
 
-export default function IncomeForm(props) {
+export default function ExpenseForm(props) {
   const { values } = useFormikContext();
   return (
     <>
     <Typography variant="h6" gutterBottom>
         Property Form
       </Typography>
-      <FieldArray name="income">
+      <FieldArray name="expense">
         {({ insert, remove, push }) => (
           <Grid container spacing={2}>
-            {values.income.length > 0 &&
-              values.income.map((friend, index) => (
+            {values.expense.length > 0 &&
+              values.expense.map((friend, index) => (
                 <>
                 
                   <Grid item xs={12} md={6}>
                     <InputField
-                      name={`income.${index}.name`}
+                      name={`expense.${index}.name`}
                       label={`name`}
                       fullWidth
                       />
                   </Grid>
                   <Grid item xs={12} md={6}>
                     <InputNumber
-                      name={`income.${index}.amount`}
+                      name={`expense.${index}.amount`}
                       label={`amount`}
                       fullWidth
                       />
