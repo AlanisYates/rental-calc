@@ -3,20 +3,20 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import InputNumber from "../FormFields/InputNumber";
 import Grid from "@mui/material/Grid";
+import { useFormikContext } from "formik";
 import * as loanLib from "loanjs";
 
 export default function LoanForm(props) {
+  const { values: formValues } = useFormikContext();
   const {
     formField: { interest, downPay, loanAmt, term },
   } = props;
-  const handleCalc = () => {
-    // const loan = new loanLib.Loan(
-    //   parseInt(loanAmt),
-    //   parseInt(term),
-    //   parseFloat(interest)
-    // );
-    // console.log(loan.installments[0]);
-    console.log(interest.value);
+
+  const handleCalc = (loanAmount, termInMonths, interestPer) => {
+    const loan = new loanLib.Loan(loanAmount, termInMonths, interestPer);
+    // loan.installments.forEach(install => {
+    //     console.log(install.installment)
+    // })
   };
 
   // const data = 500000, 360, 3.5
@@ -40,7 +40,13 @@ export default function LoanForm(props) {
           <InputNumber name={downPay.name} label={downPay.label} fullWidth />
         </Grid>
       </Grid>
-      <Button onClick={handleCalc}>Calculate payment</Button>
+      <Button
+        onClick={() =>
+          handleCalc(formValues.loanAmt, formValues.term, formValues.interest)
+        }
+      >
+        Calculate payment
+      </Button>
     </>
   );
 }

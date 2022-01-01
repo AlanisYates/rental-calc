@@ -33,13 +33,13 @@ export default {
   [downPay.name]: "",
   income: [
     {
-      name: "Item Name",
+      name: "",
       amount: "",
     },
   ],
   expense: [
     {
-      name: "Item Name",
+      name: "",
       amount: "",
     },
   ],
