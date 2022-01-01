@@ -13,17 +13,24 @@ export default function ReviewProperty() {
   };
 
   const totalIncome = () => {
-    return formValues.income.map((item) => item.amount).reduce(reducer);
+    return Number(formValues.income.map((item) => item.amount).reduce(reducer));
   };
 
   const totalExpense = () => {
-    return formValues.expense.map((item) => item.amount).reduce(reducer);
+    return Number(
+      formValues.expense.map((item) => item.amount).reduce(reducer)
+    );
   };
 
-  const cashFlow = (totalIncome() - totalExpense()).toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD",
-  });
+  const cashFlow = totalIncome() - totalExpense();
+
+  
+
+  const capRate = ((cashFlow * 12) / Number(formValues.price)).toLocaleString(
+    undefined,
+    { style: "percent", minimumFractionDigits: 2 }
+  );
+
 
   return (
     <>
@@ -36,24 +43,39 @@ export default function ReviewProperty() {
       {/* Income */}
       <Typography variant="h2">Income</Typography>
       <Typography variant="h5">
-        {numberWithCommas(
-          totalIncome().toLocaleString("en-US", {
-            style: "currency",
-            currency: "USD",
-          })
-        )}
+        {totalIncome().toLocaleString("en-US", {
+          style: "currency",
+          currency: "USD",
+        })}
       </Typography>
+      <Divider />
       <Typography variant="h2">Expenses</Typography>
       <Typography variant="h5">
-        {numberWithCommas(
-          totalExpense().toLocaleString("en-US", {
-            style: "currency",
-            currency: "USD",
-          })
-        )}
+        {totalExpense().toLocaleString("en-US", {
+          style: "currency",
+          currency: "USD",
+        })}
       </Typography>
-      <Typography variant="h2">Cashflow</Typography>
-      <Typography variant="h5">{numberWithCommas(cashFlow)}</Typography>
+      <Divider />
+      <Typography variant="h2">Monthly Cashflow</Typography>
+      <Typography variant="h5">
+        {cashFlow.toLocaleString("en-US", {
+          style: "currency",
+          currency: "USD",
+        })}
+      </Typography>
+      <Divider />
+      <Typography variant="h2">Annual Cashflow</Typography>
+      <Typography variant="h5">
+        {(cashFlow * 12).toLocaleString("en-US", {
+          style: "currency",
+          currency: "USD",
+        })}
+      </Typography>
+      <Divider />
+
+      <Typography variant="h2">Cap</Typography>
+      <Typography variant="h5">{capRate}</Typography>
 
       {/* <Button
         onClick={() => {

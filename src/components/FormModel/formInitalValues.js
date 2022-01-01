@@ -66,21 +66,25 @@ export default {
   income: [
     {
       name: "rent",
-      amount: ".99",
+      amount: "1200",
     },
-    {
-      name: "rent 1",
-      amount: "0.74",
-    },
-    {
-      name: "rent 2",
-      amount: "105.99",
-    },
+    // {
+    //   name: "rent 1",
+    //   amount: "0.74",
+    // },
+    // {
+    //   name: "rent 2",
+    //   amount: "105.99",
+    // },
   ],
   expense: [
     {
       name: "insurance",
       amount: "300",
+    },
+    {
+      name: "insurance",
+      amount: "700",
     },
   ],
 };
