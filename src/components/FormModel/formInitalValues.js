@@ -36,6 +36,10 @@ export default {
       name: "",
       amount: "",
     },
+    {
+      name: "",
+      amount: "",
+    },
   ],
   expense: [
     {

@@ -13,6 +13,7 @@ import validationSchema from "../FormModel/validationSchema";
 import IncomeForm from "../Forms/IncomeForm";
 import ExpenseForm from "../Forms/ExpenseForm";
 import LoanForm from "../Forms/LoanForm";
+import ReviewProperty from "../Forms/ReviewProperty";
 
 const steps = [
   "Property Informaion",
@@ -35,14 +36,14 @@ const _renderStepContent = (step) => {
     case 3:
       return <LoanForm formField={formField} />;
     case 4:
-      return <Typography>Property Review Form</Typography>;
+      return <ReviewProperty />;
     default:
       return <div>Not Found</div>;
   }
 };
 
 export default function SubmitProperty() {
-  const [activeStep, setActiveStep] = useState(3);
+  const [activeStep, setActiveStep] = useState(1);
   const isLastStep = activeStep === steps.length - 1;
 
   const _handleSubmit = (values, actions) => {

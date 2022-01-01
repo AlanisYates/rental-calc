@@ -17,6 +17,7 @@ export default function LoanForm(props) {
     // loan.installments.forEach(install => {
     //     console.log(install.installment)
     // })
+    // console.log(formValues)
   };
 
   // const data = 500000, 360, 3.5

@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import InputField from "../FormFields/InputField";
 import InputNumber from "../FormFields/InputNumber";
 import { FieldArray, useFormikContext } from "formik";
+import { Divider } from "@mui/material";
 
 export default function IncomeForm(props) {
   const { values } = useFormikContext();
@@ -33,11 +34,19 @@ export default function IncomeForm(props) {
                       fullWidth
                     />
                   </Grid>
+                  <Button onClick={() => remove(index)}>
+                    Remove Friend
+                  </Button>
                 </>
               ))}
+      
+              <Grid item xs={12}>
+
+
             <Button onClick={() => push({ name: "", amount: "" })}>
               Add Friend
             </Button>
+              </Grid>
           </Grid>
         )}
       </FieldArray>
