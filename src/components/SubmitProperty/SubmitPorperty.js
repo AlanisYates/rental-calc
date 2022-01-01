@@ -43,7 +43,7 @@ const _renderStepContent = (step) => {
 };
 
 export default function SubmitProperty() {
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(4);
   const isLastStep = activeStep === steps.length - 1;
 
   const _handleSubmit = (values, actions) => {

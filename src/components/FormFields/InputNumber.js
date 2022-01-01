@@ -55,6 +55,8 @@ export default function InputNumber(props) {
 
   return (
     <TextField
+      id={props.name}
+      label={props.label}
       error={meta.touched && meta.error && true}
       helperText={_renderHelperText()}
       onChange={handleChange}
