@@ -44,8 +44,21 @@ export default {
       label: "Price *",
       requiredErrorMsg: "Price is required",
     },
-    friends: {
-      name: "friends",
+    term: {
+      name: "term",
+      label: "Term (Months)",
+    },
+    interest: {
+      name: "interest",
+      label: "Interest (%)",
+    },
+    downPay: {
+      name: "downPay",
+      label: "Down payment",
+    },
+    loanAmt: {
+      name: "loanAmt",
+      label: "Loan Amount",
     },
   },
 };

@@ -10,6 +10,10 @@ const {
     country,
     price,
     zLink,
+    term,
+    loanAmt,
+    interest,
+    downPay,
   },
 } = propertyFormModel;
 
@@ -23,6 +27,10 @@ export default {
   [country.name]: "",
   [price.name]: "",
   [zLink.name]: "",
+  [term.name]: "",
+  [loanAmt.name]: "",
+  [interest.name]: "",
+  [downPay.name]: "",
   income: [
     {
       name: "Item Name",

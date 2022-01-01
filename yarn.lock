@@ -5854,6 +5854,11 @@ loader-utils@^3.2.0:
   resolved "https://registry.npmjs.org/loader-utils/-/loader-utils-3.2.0.tgz"
   integrity sha512-HVl9ZqccQihZ7JM85dco1MvO9G+ONvxoGa9rkhzFsneGLKSUg1gJf9bWzhRhcvm2qChhWpebQhP44qxjKIUCaQ==
 
+loanjs@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/loanjs/-/loanjs-1.0.7.tgz#348b64c2f1862c31db00e49fa21ac90856d32238"
+  integrity sha512-YRFOQUbFZH1iM8T8MLBR1CJph9+x0D5fY11UQomlnw7IJ7qeM4rrFHdG6uiZ9yJDAS552mfwaMmXkZwEN7a8xw==
+
 locate-path@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/locate-path/-/locate-path-2.0.0.tgz"
@@ -7123,18 +7128,9 @@ prompts@^2.0.1, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.0:
   version "15.8.0"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.0.tgz"
-  integrity sha512-fDGekdaHh65eI3lMi5OnErU6a8Ighg2KjcjQxO7m8VHyWjcPyj5kiOgV1LQDOOOgVy3+5FgjXvdSSX7B8/5/4g==
-  dependencies:
-    loose-envify "^1.4.0"
-    object-assign "^4.1.1"
-    react-is "^16.13.1"
-
-prop-types@^15.8.0:
-  version "15.8.0"
-  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.0.tgz#d237e624c45a9846e469f5f31117f970017ff588"
   integrity sha512-fDGekdaHh65eI3lMi5OnErU6a8Ighg2KjcjQxO7m8VHyWjcPyj5kiOgV1LQDOOOgVy3+5FgjXvdSSX7B8/5/4g==
   dependencies:
     loose-envify "^1.4.0"
