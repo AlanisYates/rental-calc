@@ -5,30 +5,13 @@ import { values } from "lodash";
 import { numberWithCommas } from "../utils/utils";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import ArrDoughnut from "./components/ArrDoughnut";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function ReviewProperty() {
   const { values: formValues } = useFormikContext();
 
-  function random_rgba() {
-    var o = Math.round, r = Math.random, s = 255;
-    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
-}
-
-  const data = {
-    // labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-    labels: formValues.income.map(item => item.name),
-    datasets: [
-      {
-        label: "# of Votes",
-        data: formValues.income.map(item => item.amount),
-        backgroundColor: formValues.income.map(item => random_rgba()),
-        // borderColor: formValues.income.map(item => random_rgba()),
-        borderWidth: 2,
-      },
-    ],
-  };
   //   Calculations
   const reducer = (a, b) => {
     return Number(a) + Number(b);
@@ -95,12 +78,19 @@ export default function ReviewProperty() {
 
       <Typography variant="h2">Cap</Typography>
       <Typography variant="h5">{capRate}</Typography>
+      <Divider />
       <Box width="25%">
-
-
-      <Doughnut data={data} />
+        <ArrDoughnut
+          labels={formValues.income.map((item) => item.name)}
+          amounts={formValues.income.map((item) => item.amount)}
+        />
       </Box>
-
+      <Box width="25%">
+        <ArrDoughnut
+          labels={formValues.expense.map((item) => item.name)}
+          amounts={formValues.expense.map((item) => item.amount)}
+        />
+      </Box>
       {/* <Button
         onClick={() => {
           console.log(numberWithCommas(totalIncome()));
