@@ -1,10 +1,8 @@
 import React from "react";
 import { Divider, Typography, Button, Box } from "@mui/material";
 import { useFormikContext } from "formik";
-import { values } from "lodash";
 import { numberWithCommas } from "../utils/utils";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Doughnut } from "react-chartjs-2";
 import ArrDoughnut from "./components/ArrDoughnut";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
