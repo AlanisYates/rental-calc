@@ -2,10 +2,8 @@ import React from "react";
 import { Divider, Typography, Button, Box } from "@mui/material";
 import { useFormikContext } from "formik";
 import { numberWithCommas } from "../utils/utils";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import ArrDoughnut from "./components/ArrDoughnut";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function ReviewProperty() {
   const { values: formValues } = useFormikContext();
