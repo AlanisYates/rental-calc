@@ -4,7 +4,6 @@ import { useFormikContext } from "formik";
 import { numberWithCommas } from "../utils/utils";
 import ArrDoughnut from "./components/ArrDoughnut";
 
-
 export default function ReviewProperty() {
   const { values: formValues } = useFormikContext();
 

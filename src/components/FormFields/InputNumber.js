@@ -5,13 +5,14 @@ import { useField } from "formik";
 import NumberFormat from "react-number-format";
 import TextField from "@mui/material/TextField";
 
+
 function NumberFormatCustom(props) {
   const { inputRef, onChange, ...other } = props;
 
   return (
     <NumberFormat
       {...other}
-      getInputRef={inputRef}
+      // getInputRef={inputRef}
       onValueChange={(values) => {
         onChange({
           target: {
@@ -55,8 +56,6 @@ export default function InputNumber(props) {
 
   return (
     <TextField
-      id={props.name}
-      label={props.label}
       error={meta.touched && meta.error && true}
       helperText={_renderHelperText()}
       onChange={handleChange}

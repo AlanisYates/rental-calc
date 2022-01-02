@@ -15,6 +15,58 @@ import ExpenseForm from "../Forms/ExpenseForm";
 import LoanForm from "../Forms/LoanForm";
 import ReviewProperty from "../Forms/ReviewProperty";
 
+const initalStuff = {
+  nickName: "Test",
+  addressOne: "123 address way",
+  addressTwo: "nah",
+  city: "Tampa",
+  state: "FL",
+  zipcode: "33679",
+  country: "United States",
+  price: "200000",
+  zLink: "6745",
+  term: "360",
+  loanAmt: "3000000",
+  interest: "3.5",
+  downPay: "20000",
+  income: [
+    {
+      name: "rent",
+      amount: "1200",
+    },
+    {
+      name: "rent 1",
+      amount: "356",
+    },
+    {
+      name: "rent 2",
+      amount: "1005.99",
+    },
+    {
+      name: "Shed",
+      amount: "203",
+    },
+    {
+      name: "Perking",
+      amount: "356",
+    },
+    {
+      name: "Washer",
+      amount: "145.99",
+    },
+  ],
+  expense: [
+    {
+      name: "insurance",
+      amount: "300",
+    },
+    {
+      name: "insurance",
+      amount: "700",
+    },
+  ],
+};
+
 const steps = [
   "Property Informaion",
   "Income",
@@ -43,8 +95,9 @@ const _renderStepContent = (step) => {
 };
 
 export default function SubmitProperty() {
-  const [activeStep, setActiveStep] = useState(4);
+  const [activeStep, setActiveStep] = useState(0);
   const isLastStep = activeStep === steps.length - 1;
+  const [initVal, setInitVals] = useState(formInitalValues)
 
   const _handleSubmit = (values, actions) => {
     if (isLastStep) {
@@ -92,7 +145,7 @@ export default function SubmitProperty() {
       ) : (
         <>
           <Formik
-            initialValues={formInitalValues}
+            initialValues={initalStuff}
             validationSchema={validationSchema}
             onSubmit={_handleSubmit}
           >
@@ -114,6 +167,10 @@ export default function SubmitProperty() {
               </Form>
             )}
           </Formik>
+          <Button onClick={() => {
+            // setInitVals(initalStuff)
+            // console.log(initalStuff)
+          }}>Load Data</Button>
         </>
       )}
     </Box>
