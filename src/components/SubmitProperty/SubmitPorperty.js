@@ -97,7 +97,7 @@ const _renderStepContent = (step) => {
 export default function SubmitProperty() {
   const [activeStep, setActiveStep] = useState(0);
   const isLastStep = activeStep === steps.length - 1;
-  const [initVal, setInitVals] = useState(formInitalValues)
+  const [initVal, setInitVals] = useState(formInitalValues);
 
   const _handleSubmit = (values, actions) => {
     if (isLastStep) {
@@ -167,10 +167,14 @@ export default function SubmitProperty() {
               </Form>
             )}
           </Formik>
-          <Button onClick={() => {
-            // setInitVals(initalStuff)
-            // console.log(initalStuff)
-          }}>Load Data</Button>
+          <Button
+            onClick={() => {
+              // setInitVals(initalStuff)
+              // console.log(initalStuff)
+            }}
+          >
+            Load Data
+          </Button>
         </>
       )}
     </Box>
