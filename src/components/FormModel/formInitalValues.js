@@ -68,14 +68,26 @@ export default {
       name: "rent",
       amount: "1200",
     },
-    // {
-    //   name: "rent 1",
-    //   amount: "0.74",
-    // },
-    // {
-    //   name: "rent 2",
-    //   amount: "105.99",
-    // },
+    {
+      name: "rent 1",
+      amount: "356",
+    },
+    {
+      name: "rent 2",
+      amount: "1005.99",
+    },
+    {
+      name: "Shed",
+      amount: "203",
+    },
+    {
+      name: "Perking",
+      amount: "356",
+    },
+    {
+      name: "Washer",
+      amount: "145.99",
+    },
   ],
   expense: [
     {
