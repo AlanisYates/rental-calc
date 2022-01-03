@@ -39,20 +39,7 @@ export default function ReviewProperty() {
       </Typography>
       <Divider />
       {/* Income */}
-      <IncomeReview />
-      {/* <Grid container spacing={3} alignItems="center" justifyContent="center">
-        <Grid item xs={6}>
-          <Typography variant="h4">Income</Typography>
-        </Grid>
-        <Grid item xs={6}>
-          <Typography variant="h5">
-            {totalIncome().toLocaleString("en-US", {
-              style: "currency",
-              currency: "USD",
-            })}
-          </Typography>
-        </Grid>
-      </Grid> */}
+      <IncomeReview totalIncome={totalIncome()}/>
 
       {/* <Divider />
       <Typography variant="h2">Expenses</Typography>
