@@ -19,7 +19,7 @@ const steps = [
   "Property Informaion",
   "Income",
   "Expenses",
-  "Loan Information",
+  // "Loan Information",
   "Review",
 ];
 
@@ -33,9 +33,9 @@ const _renderStepContent = (step) => {
       return <IncomeForm formField={formField} />;
     case 2:
       return <ExpenseForm formField={formField} />;
+    // case 3:
+    //   return <LoanForm formField={formField} />;
     case 3:
-      return <LoanForm formField={formField} />;
-    case 4:
       return <ReviewProperty />;
     default:
       return <div>Not Found</div>;
@@ -43,7 +43,7 @@ const _renderStepContent = (step) => {
 };
 
 export default function SubmitProperty() {
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(0);
   const isLastStep = activeStep === steps.length - 1;
 
   const _handleSubmit = (values, actions) => {

@@ -6,10 +6,7 @@ import InputNumber from "../FormFields/InputNumber";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
-import Button from "@mui/material/Button";
-import DeleteIcon from "@mui/icons-material/Delete";
 import { FieldArray, useFormikContext } from "formik";
-import { Add } from "@mui/icons-material";
 
 export default function ExpenseForm(props) {
   const { values } = useFormikContext();
