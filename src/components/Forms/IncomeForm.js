@@ -5,6 +5,9 @@ import Typography from "@mui/material/Typography";
 import InputField from "../FormFields/InputField";
 import InputNumber from "../FormFields/InputNumber";
 import { FieldArray, useFormikContext } from "formik";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import IconButton from "@mui/material/IconButton";
+import AddIcon from "@mui/icons-material/Add";
 import { Divider } from "@mui/material";
 
 export default function IncomeForm(props) {
@@ -20,28 +23,33 @@ export default function IncomeForm(props) {
             {values.income.length > 0 &&
               values.income.map((friend, index) => (
                 <>
-                  <Grid item xs={12} md={6}>
+                  <Grid item xs={12} md={4}>
                     <InputField
                       name={`income.${index}.name`}
                       label={`name`}
                       fullWidth
                     />
                   </Grid>
-                  <Grid item xs={12} md={6}>
+                  <Grid item xs={12} md={4}>
                     <InputNumber
                       name={`income.${index}.amount`}
                       label={`amount`}
                       fullWidth
                     />
                   </Grid>
-                  <Button onClick={() => remove(index)}>Remove Friend</Button>
+                  <Grid item xs={12} md={4}>
+                    {/* <Button onClick={() => remove(index)}>Remove Friend</Button> */}
+                    <IconButton onClick={() => remove(index)}>
+                      <DeleteOutlineIcon />
+                    </IconButton>
+                  </Grid>
                 </>
               ))}
 
             <Grid item xs={12}>
-              <Button onClick={() => push({ name: "", amount: "" })}>
-                Add Friend
-              </Button>
+              <IconButton onClick={() => push({ name: "", amount: "" })}>
+                <AddIcon />
+              </IconButton>
             </Grid>
           </Grid>
         )}
