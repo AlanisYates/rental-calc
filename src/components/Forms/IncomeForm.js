@@ -8,7 +8,6 @@ import { FieldArray, useFormikContext } from "formik";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
-import { Divider } from "@mui/material";
 
 export default function IncomeForm(props) {
   const { values } = useFormikContext();
@@ -19,28 +18,32 @@ export default function IncomeForm(props) {
       </Typography>
       <FieldArray name="income">
         {({ insert, remove, push }) => (
-          <Grid container spacing={2}>
+          <Grid
+            container
+            spacing={3}
+            alignItems="center"
+            justifyContent="center"
+          >
             {values.income.length > 0 &&
               values.income.map((friend, index) => (
                 <>
-                  <Grid item xs={12} md={4}>
+                  <Grid item xs={12} md={5.5}>
                     <InputField
                       name={`income.${index}.name`}
                       label={`name`}
                       fullWidth
                     />
                   </Grid>
-                  <Grid item xs={12} md={4}>
+                  <Grid item xs={12} md={5.5}>
                     <InputNumber
                       name={`income.${index}.amount`}
                       label={`amount`}
                       fullWidth
                     />
                   </Grid>
-                  <Grid item xs={12} md={4}>
-                    {/* <Button onClick={() => remove(index)}>Remove Friend</Button> */}
+                  <Grid item xs={12} md={1}>
                     <IconButton onClick={() => remove(index)}>
-                      <DeleteOutlineIcon />
+                      <DeleteOutlineIcon style={{ fill: "red" }} />
                     </IconButton>
                   </Grid>
                 </>
@@ -48,7 +51,7 @@ export default function IncomeForm(props) {
 
             <Grid item xs={12}>
               <IconButton onClick={() => push({ name: "", amount: "" })}>
-                <AddIcon />
+                <AddIcon color="primary" />
               </IconButton>
             </Grid>
           </Grid>

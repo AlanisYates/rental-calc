@@ -1,10 +1,15 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import InputField from "../FormFields/InputField";
 import InputNumber from "../FormFields/InputNumber";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import IconButton from "@mui/material/IconButton";
+import AddIcon from "@mui/icons-material/Add";
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { FieldArray, useFormikContext } from "formik";
+import { Add } from "@mui/icons-material";
 
 export default function ExpenseForm(props) {
   const { values } = useFormikContext();
@@ -15,29 +20,41 @@ export default function ExpenseForm(props) {
       </Typography>
       <FieldArray name="expense">
         {({ insert, remove, push }) => (
-          <Grid container spacing={2}>
+          <Grid
+            container
+            spacing={3}
+            alignItems="center"
+            justifyContent="center"
+          >
             {values.expense.length > 0 &&
               values.expense.map((friend, index) => (
                 <>
-                  <Grid item xs={12} md={6}>
+                  <Grid item xs={12} md={5.5}>
                     <InputField
                       name={`expense.${index}.name`}
                       label={`name`}
                       fullWidth
                     />
                   </Grid>
-                  <Grid item xs={12} md={6}>
+                  <Grid item xs={12} md={5.5}>
                     <InputNumber
                       name={`expense.${index}.amount`}
                       label={`amount`}
                       fullWidth
                     />
                   </Grid>
+                  <Grid item xs={12} md={1}>
+                    <IconButton onClick={() => remove(index)}>
+                      <DeleteOutlineIcon style={{ fill: "red" }} />
+                    </IconButton>
+                  </Grid>
                 </>
               ))}
-            <Button onClick={() => push({ name: "", amount: "" })}>
-              Add Friend
-            </Button>
+             <Grid item xs={12}>
+              <IconButton onClick={() => push({ name: "", amount: "" })}>
+                <AddIcon color="primary" />
+              </IconButton>
+            </Grid>
           </Grid>
         )}
       </FieldArray>
