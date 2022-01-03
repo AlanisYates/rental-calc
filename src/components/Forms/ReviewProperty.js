@@ -5,6 +5,7 @@ import { useFormikContext } from "formik";
 import { numberWithCommas } from "../utils/utils";
 import ArrDoughnut from "./components/ArrDoughnut";
 import ExpenseReview from "./ReviewForms/ExpenseReview";
+import IncomeReview from "./ReviewForms/IncomeReview";
 
 export default function ReviewProperty() {
   const { values: formValues } = useFormikContext();
@@ -38,6 +39,7 @@ export default function ReviewProperty() {
       </Typography>
       <Divider />
       {/* Income */}
+      <IncomeReview />
       {/* <Grid container spacing={3} alignItems="center" justifyContent="center">
         <Grid item xs={6}>
           <Typography variant="h4">Income</Typography>
