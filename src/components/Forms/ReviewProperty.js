@@ -1,5 +1,6 @@
 import React from "react";
-import { Divider, Typography, Button, Box } from "@mui/material";
+import { Divider, Typography, Button, Box, Stack } from "@mui/material";
+import Grid from "@mui/material/Grid";
 import { useFormikContext } from "formik";
 import { numberWithCommas } from "../utils/utils";
 import ArrDoughnut from "./components/ArrDoughnut";
@@ -31,21 +32,26 @@ export default function ReviewProperty() {
 
   return (
     <>
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h1" paddingTop={1}>
         Review
       </Typography>
-
       <Divider />
-
       {/* Income */}
-      <Typography variant="h2">Income</Typography>
-      <Typography variant="h5">
-        {totalIncome().toLocaleString("en-US", {
-          style: "currency",
-          currency: "USD",
-        })}
-      </Typography>
-      <Divider />
+      {/* <Grid container spacing={3} alignItems="center" justifyContent="center">
+        <Grid item xs={6}>
+          <Typography variant="h4">Income</Typography>
+        </Grid>
+        <Grid item xs={6}>
+          <Typography variant="h5">
+            {totalIncome().toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+            })}
+          </Typography>
+        </Grid>
+      </Grid> */}
+
+      {/* <Divider />
       <Typography variant="h2">Expenses</Typography>
       <Typography variant="h5">
         {totalExpense().toLocaleString("en-US", {
@@ -85,7 +91,7 @@ export default function ReviewProperty() {
           labels={formValues.expense.map((item) => item.name)}
           amounts={formValues.expense.map((item) => item.amount)}
         />
-      </Box>
+      </Box> */}
       {/* <Button
         onClick={() => {
           console.log(numberWithCommas(totalIncome()));

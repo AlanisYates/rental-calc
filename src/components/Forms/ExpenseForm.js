@@ -47,7 +47,7 @@ export default function ExpenseForm(props) {
                   </Grid>
                 </>
               ))}
-             <Grid item xs={12}>
+            <Grid item xs={12}>
               <IconButton onClick={() => push({ name: "", amount: "" })}>
                 <AddIcon color="primary" />
               </IconButton>
