@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import { useFormikContext } from "formik";
 import { numberWithCommas } from "../utils/utils";
 import ArrDoughnut from "./components/ArrDoughnut";
+import ExpenseReview from "./ReviewForms/ExpenseReview";
 
 export default function ReviewProperty() {
   const { values: formValues } = useFormikContext();
@@ -110,6 +111,7 @@ export default function ReviewProperty() {
         maybe chart of cost breakdown
 
       */}
+      <ExpenseReview />
     </>
   );
 }
