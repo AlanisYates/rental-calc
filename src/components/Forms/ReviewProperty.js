@@ -6,6 +6,8 @@ import { numberWithCommas } from "../utils/utils";
 import ArrDoughnut from "./components/ArrDoughnut";
 import ExpenseReview from "./ReviewForms/ExpenseReview";
 import ArrayReview from "./ReviewForms/ArrayReview";
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent';
 
 export default function ReviewProperty() {
   const { values: formValues } = useFormikContext();
@@ -39,18 +41,23 @@ export default function ReviewProperty() {
       </Typography>
       {/* <Divider /> */}
       {/* Income */}
+
+      <Card sx={{ display: 'flex', width:'70%' }}>
+
       <ArrayReview
         totalAmount={totalIncome()}
         amountArr={formValues.income}
         title="Income"
       />
+      </Card>
       {/* expense */}
+      <Card sx={{ display: 'flex', width: '70%' }}>
       <ArrayReview
         totalAmount={totalExpense()}
         amountArr={formValues.expense}
         title="Expense"
       />
-
+</Card>
       {/* Expenses */}
 
       {/* 

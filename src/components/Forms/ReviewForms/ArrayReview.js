@@ -16,7 +16,7 @@ export default function ArrayReview(props) {
           {title}
         </Typography>
       </Grid>
-      <Grid item xs={6} alignContent="center">
+      <Grid item xs={7} alignContent="center">
         <Stack
           direction="row"
           divider={<Divider orientation="vertical" flexItem />}
@@ -26,10 +26,10 @@ export default function ArrayReview(props) {
           textAlign="center"
         >
           <Stack>
-            <Typography variant="h2" fontWeight="400" gutterBottom>
+            <Typography variant="h4" fontWeight="400" gutterBottom>
               Monthly
             </Typography>
-            <Typography variant="h3" color="primary">
+            <Typography variant="h4" color="primary">
               {totalAmount?.toLocaleString("en-US", {
                 style: "currency",
                 currency: "USD",
@@ -37,10 +37,10 @@ export default function ArrayReview(props) {
             </Typography>
           </Stack>
           <Stack>
-            <Typography variant="h2" fontWeight="400" gutterBottom>
+            <Typography variant="h4" fontWeight="400" gutterBottom>
               Annaully
             </Typography>
-            <Typography variant="h3" color="primary">
+            <Typography variant="h4" color="primary">
               {annual?.toLocaleString("en-US", {
                 style: "currency",
                 currency: "USD",
@@ -50,8 +50,8 @@ export default function ArrayReview(props) {
         </Stack>
       </Grid>
 
-      <Grid item xs={6} justifyContent="center">
-        <Box width="80%">
+      <Grid item xs={5} justifyContent="center">
+        <Box width="75%">
           <ArrDoughnut
             labels={amountArr.map((item) => item.name)}
             amounts={amountArr.map((item) => item.amount)}
