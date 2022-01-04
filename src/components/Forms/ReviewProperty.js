@@ -1,11 +1,11 @@
 import React from "react";
 import { Divider, Typography, Button, Box, Stack } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import { useFormikContext } from "formik";
+import { FieldArray, useFormikContext } from "formik";
 import { numberWithCommas } from "../utils/utils";
 import ArrDoughnut from "./components/ArrDoughnut";
 import ExpenseReview from "./ReviewForms/ExpenseReview";
-import IncomeReview from "./ReviewForms/IncomeReview";
+import ArrayReview from "./ReviewForms/ArrayReview";
 
 export default function ReviewProperty() {
   const { values: formValues } = useFormikContext();
@@ -37,59 +37,13 @@ export default function ReviewProperty() {
       <Typography variant="h1" paddingTop={1}>
         Review
       </Typography>
-      <Divider />
+      {/* <Divider /> */}
       {/* Income */}
-      <IncomeReview totalIncome={totalIncome()}/>
+      <ArrayReview totalAmount={totalIncome()} amountArr={formValues.income} title="Income" />
+      {/* expense */}
+      <ArrayReview totalAmount={totalExpense()} amountArr={formValues.expense} title="Expense" />
 
-      {/* <Divider />
-      <Typography variant="h2">Expenses</Typography>
-      <Typography variant="h5">
-        {totalExpense().toLocaleString("en-US", {
-          style: "currency",
-          currency: "USD",
-        })}
-      </Typography>
-      <Divider />
-      <Typography variant="h2">Monthly Cashflow</Typography>
-      <Typography variant="h5">
-        {cashFlow.toLocaleString("en-US", {
-          style: "currency",
-          currency: "USD",
-        })}
-      </Typography>
-      <Divider />
-      <Typography variant="h2">Annual Cashflow</Typography>
-      <Typography variant="h5">
-        {(cashFlow * 12).toLocaleString("en-US", {
-          style: "currency",
-          currency: "USD",
-        })}
-      </Typography>
-      <Divider />
-
-      <Typography variant="h2">Cap</Typography>
-      <Typography variant="h5">{capRate}</Typography>
-      <Divider />
-      <Box width="25%">
-        <ArrDoughnut
-          labels={formValues.income.map((item) => item.name)}
-          amounts={formValues.income.map((item) => item.amount)}
-        />
-      </Box>
-      <Box width="25%">
-        <ArrDoughnut
-          labels={formValues.expense.map((item) => item.name)}
-          amounts={formValues.expense.map((item) => item.amount)}
-        />
-      </Box> */}
-      {/* <Button
-        onClick={() => {
-          console.log(numberWithCommas(totalIncome()));
-        }}
-      >
-        Log val
-      </Button> */}
-
+     
       {/* Expenses */}
 
       {/* 

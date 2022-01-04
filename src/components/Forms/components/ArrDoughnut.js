@@ -40,7 +40,6 @@ export default function ArrDoughnut(props) {
 
   return (
     <>
-      <Typography variant="h2">Hello</Typography>
       <Doughnut data={data} />
     </>
   );
