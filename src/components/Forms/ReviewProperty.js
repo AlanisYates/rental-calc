@@ -39,11 +39,18 @@ export default function ReviewProperty() {
       </Typography>
       {/* <Divider /> */}
       {/* Income */}
-      <ArrayReview totalAmount={totalIncome()} amountArr={formValues.income} title="Income" />
+      <ArrayReview
+        totalAmount={totalIncome()}
+        amountArr={formValues.income}
+        title="Income"
+      />
       {/* expense */}
-      <ArrayReview totalAmount={totalExpense()} amountArr={formValues.expense} title="Expense" />
+      <ArrayReview
+        totalAmount={totalExpense()}
+        amountArr={formValues.expense}
+        title="Expense"
+      />
 
-     
       {/* Expenses */}
 
       {/* 
