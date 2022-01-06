@@ -15,7 +15,7 @@ export default function ArrDoughnut(props) {
     labels,
     datasets: [
       {
-        label: "# of Votes",
+        label: "# of Votes needed",
         data: amounts,
         backgroundColor: amounts.map((item) => randomColor()),
         // borderColor: formValues.income.map(item => random_rgba()),
